@@ -4,6 +4,7 @@
   "description": "Package for Counter-Strike: Global Offensive Game State Integration types",
   "main": "index.d.ts",
   "types": "index.d.ts",
+  "homepage": "https://github.com/Morabotti/csgo-gsi-types",
   "keywords": [
     "csgo",
     "gsi",
