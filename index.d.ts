@@ -33,7 +33,7 @@ declare namespace __GSICSGO {
     provider: Provider
     map: Map
     player: Player
-    allPlayers: AllPlayers
+    allplayers: AllPlayers
     phase_countdowns: Phase
     grenades?: Grenades
     previously: Previously
@@ -75,7 +75,7 @@ declare namespace __GSICSGO {
     provider?: Provider
     map?: Map
     player?: Player
-    allPlayers?: AllPlayers
+    allplayers?: AllPlayers
     phase_countdowns?: Phase
     grenades?: Grenades
     bomb?: BombState
