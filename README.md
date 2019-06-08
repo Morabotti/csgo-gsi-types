@@ -1,6 +1,6 @@
 ## Types for CS:GO Game State Integration
 
-###Example:
+### Example:
 ```ts
 // Type to use when user is spectating 
 interface GameStateSpectating {
@@ -27,7 +27,7 @@ interface GameStatePlaying {
 }
 ```
 
-###How to use:
+### How to use:
 ```ts
 import { GameStateSpectating } from 'csgo-gsi-types'
 
