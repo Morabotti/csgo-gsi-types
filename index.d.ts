@@ -9,9 +9,6 @@ declare module 'csgo-gsi-types' {
   export import Grenade = __GSICSGO.Grenade
   export import AllPlayers = __GSICSGO.AllPlayers
   export import PlayerList = __GSICSGO.PlayerList
-  export import GameStateSpectating = __GSICSGO.GameStateSpectating
-  export import GameStatePlaying = __GSICSGO.GameStatePlaying
-  export import GameStateMenu = __GSICSGO.GameStateMenu
   export import PhaseCountDown = __GSICSGO.Phase
   export import Bomb = __GSICSGO.Bomb
   export import Round = __GSICSGO.Round
@@ -23,19 +20,27 @@ declare module 'csgo-gsi-types' {
   export import TeamType = __GSICSGO.TeamType
   export import RoundWinningType = __GSICSGO.RoundWinningType
   export import BombState = __GSICSGO.BombState
-  export import MapPhase = __GSICSGO.MapPhase
+  export import PhaseExt = __GSICSGO.PhaseExt
+  export import PhaseMap = __GSICSGO.PhaseMap
 
-  export default __GSICSGO
+  export import GameStateSpectating = __GSICSGO.GameStateSpectating
+  export import GameStatePlaying = __GSICSGO.GameStatePlaying
+  export import GameStateMenu = __GSICSGO.GameStateMenu
+
+  export import GameState = __GSICSGO.GameState
 }
 
 declare namespace __GSICSGO {
+  export type GameState = GameStateSpectating | GameStatePlaying | GameStateMenu
+
   export interface GameStateSpectating {
     provider: Provider
     map: Map
+    round?: Round
     player: Player
     allplayers: AllPlayers
     phase_countdowns: Phase
-    grenades?: Grenades
+    grenades: Grenades
     previously: Previously
     bomb: BombState
     auth: Auth
@@ -66,7 +71,7 @@ declare namespace __GSICSGO {
   }
 
   export interface Round {
-    phase: MapPhase
+    phase: PhaseRound
     bomb?: 'planted' | 'defused' | 'exploded'
     win_team: TeamType
   }
@@ -74,6 +79,7 @@ declare namespace __GSICSGO {
   export interface Previously {
     provider?: Provider
     map?: Map
+    round?: Round
     player?: Player
     allplayers?: AllPlayers
     phase_countdowns?: Phase
@@ -135,11 +141,12 @@ declare namespace __GSICSGO {
   }
 
   export interface Grenade {
-    owner?: number
-    position: string
-    velocity: string
+    owner: number
+    position?: string
+    velocity?: string
+    flames?: Object
     lifetime: string
-    type?: string
+    type: string
     effecttime?: string
   }
 
@@ -270,7 +277,7 @@ declare namespace __GSICSGO {
       ammo_reserve: number
       state: WeaponState
     }
-
+ 
     interface Grenade {
       type: 'Grenade'
       name: 'weapon_smokegrenade' |
@@ -284,7 +291,6 @@ declare namespace __GSICSGO {
     }
   }
 
-
   export interface PlayerStats {
     kills: number
     assists: number
@@ -296,7 +302,7 @@ declare namespace __GSICSGO {
   export interface Map {
     mode: string
     name: string
-    phase: MapPhase
+    phase: PhaseMap
     round: number
     team_ct: Team
     team_t: Team
@@ -315,7 +321,7 @@ declare namespace __GSICSGO {
   }
 
   export interface Phase {
-    phase: MapPhase
+    phase: PhaseExt
     phase_ends_in: string
   }
 
@@ -358,7 +364,11 @@ declare namespace __GSICSGO {
     't_win_bomb' |
     'ct_win_defuse'
 
+  export type GrenadeType = 'inferno' | 'smoke' | 'flashbang' | 'frag' | 'decoy'
+
   export type PlayerActivityType = 'playing' | 'free' | 'textinput' | 'menu'
+
+  export type GameModeType = 'casual' | 'competitive'
 
   export type ObservatorSlotType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
@@ -366,5 +376,9 @@ declare namespace __GSICSGO {
 
   export type BombState = 'planted' | 'planting' | 'exploded' | 'defusing' | 'defused' | 'carried' | 'dropped'
 
-  export type MapPhase = 'freezetime' | 'bomb' | 'warmup' | 'live' | 'over' | 'defuse'
+  export type PhaseRound = 'live' | 'freezetime' | 'over'
+
+  export type PhaseMap = 'live' | 'intermission' | 'gameover' | 'warmup'
+
+  export type PhaseExt = 'freezetime' | 'bomb' | 'warmup' | 'live' | 'over' | 'defuse' | 'paused'
 }

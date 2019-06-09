@@ -2,6 +2,9 @@
 
 ### Example:
 ```ts
+// Type to use when your state is generalized
+export type GameState = GameStateSpectating | GameStatePlaying | GameStateMenu
+
 // Type to use when user is spectating 
 interface GameStateSpectating {
   provider: Provider
@@ -25,13 +28,24 @@ interface GameStatePlaying {
   added?: AddedPlaying
   auth: Auth
 }
+
+// Type in menus
+export interface GameStateMenu {
+  provider: Provider
+  player: PlayerMenu
+  auth: Auth
+}
 ```
 
 ### How to use:
-```ts
-import { GameStateSpectating } from 'csgo-gsi-types'
 
-const latestGameState: GameStateSpectating
+Install by:
+`npm install csgo-gsi-types --save-dev`
+
+```ts
+import { GameState } from 'csgo-gsi-types'
+
+const gameState: GameState
 ```
 
 ### Module:
@@ -47,9 +61,6 @@ declare module 'csgo-gsi-types' {
   export import Grenade = __GSICSGO.Grenade
   export import AllPlayers = __GSICSGO.AllPlayers
   export import PlayerList = __GSICSGO.PlayerList
-  export import GameStateSpectating = __GSICSGO.GameStateSpectating
-  export import GameStatePlaying = __GSICSGO.GameStatePlaying
-  export import GameStateMenu = __GSICSGO.GameStateMenu
   export import PhaseCountDown = __GSICSGO.Phase
   export import Bomb = __GSICSGO.Bomb
   export import Round = __GSICSGO.Round
@@ -61,8 +72,13 @@ declare module 'csgo-gsi-types' {
   export import TeamType = __GSICSGO.TeamType
   export import RoundWinningType = __GSICSGO.RoundWinningType
   export import BombState = __GSICSGO.BombState
-  export import MapPhase = __GSICSGO.MapPhase
+  export import PhaseExt = __GSICSGO.PhaseExt
+  export import PhaseMap = __GSICSGO.PhaseMap
 
-  export default __GSICSGO
+  export import GameStateSpectating = __GSICSGO.GameStateSpectating
+  export import GameStatePlaying = __GSICSGO.GameStatePlaying
+  export import GameStateMenu = __GSICSGO.GameStateMenu
+
+  export import GameState = __GSICSGO.GameState
 }
 ```
