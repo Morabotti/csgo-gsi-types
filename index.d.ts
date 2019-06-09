@@ -26,13 +26,9 @@ declare module 'csgo-gsi-types' {
   export import GameStateSpectating = __GSICSGO.GameStateSpectating
   export import GameStatePlaying = __GSICSGO.GameStatePlaying
   export import GameStateMenu = __GSICSGO.GameStateMenu
-
-  export import GameState = __GSICSGO.GameState
 }
 
 declare namespace __GSICSGO {
-  export type GameState = GameStateSpectating | GameStatePlaying | GameStateMenu
-
   export interface GameStateSpectating {
     provider: Provider
     map: Map
@@ -42,7 +38,7 @@ declare namespace __GSICSGO {
     phase_countdowns: Phase
     grenades: Grenades
     previously: Previously
-    bomb: BombState
+    bomb: Bomb
     auth: Auth
   }
 

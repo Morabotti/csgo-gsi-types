@@ -2,9 +2,6 @@
 
 ### Example:
 ```ts
-// Type to use when your state is generalized
-export type GameState = GameStateSpectating | GameStatePlaying | GameStateMenu
-
 // Type to use when user is spectating 
 interface GameStateSpectating {
   provider: Provider
@@ -14,7 +11,7 @@ interface GameStateSpectating {
   phase_countdowns: Phase
   grenades?: Grenades
   previously: Previously
-  bomb: BombState
+  bomb: Bomb
   auth: Auth
 }
 
@@ -43,9 +40,9 @@ Install by:
 `npm install csgo-gsi-types --save-dev`
 
 ```ts
-import { GameState } from 'csgo-gsi-types'
+import { GameStateSpectating } from 'csgo-gsi-types'
 
-const gameState: GameState
+const gameState: GameStateSpectating
 ```
 
 ### Module:
@@ -78,7 +75,5 @@ declare module 'csgo-gsi-types' {
   export import GameStateSpectating = __GSICSGO.GameStateSpectating
   export import GameStatePlaying = __GSICSGO.GameStatePlaying
   export import GameStateMenu = __GSICSGO.GameStateMenu
-
-  export import GameState = __GSICSGO.GameState
 }
 ```
