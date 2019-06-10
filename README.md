@@ -5,6 +5,21 @@ Install by:
 
 ### Example:
 ```ts
+// Type for unknown state
+export interface GameState {
+  provider: Provider
+  auth: Auth
+  player?: Player
+  allplayers?: AllPlayers
+  round?: Round
+  phase_countdowns?: Phase
+  grenades?: Grenades
+  previously?: Previously
+  added?: AddedPlaying
+  bomb?: Bomb
+  map?: Map
+}
+
 // Type to use when user is spectating 
 interface GameStateSpectating {
   provider: Provider
@@ -41,9 +56,9 @@ export interface GameStateMenu {
 ### How to use:
 
 ```ts
-import { GameStateSpectating } from 'csgo-gsi-types'
+import { GameState } from 'csgo-gsi-types'
 
-const gameState: GameStateSpectating
+const gameState: GameState
 ```
 
 ### Module:
@@ -66,6 +81,7 @@ declare module 'csgo-gsi-types' {
   export import Weapon = __GSICSGO.Weapon
 
   export import weaponTypes = __GSICSGO.weaponTypes
+  export import grenadeTypes = __GSICSGO.grenadeTypes
 
   export import TeamType = __GSICSGO.TeamType
   export import RoundWinningType = __GSICSGO.RoundWinningType
@@ -76,5 +92,6 @@ declare module 'csgo-gsi-types' {
   export import GameStateSpectating = __GSICSGO.GameStateSpectating
   export import GameStatePlaying = __GSICSGO.GameStatePlaying
   export import GameStateMenu = __GSICSGO.GameStateMenu
+  export import GameState = __GSICSGO.GameState
 }
 ```
