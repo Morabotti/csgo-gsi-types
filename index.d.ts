@@ -69,7 +69,7 @@ declare namespace __GSICSGO {
   export interface Round {
     phase: PhaseRound
     bomb?: 'planted' | 'defused' | 'exploded'
-    win_team: TeamType
+    win_team?: TeamType
   }
 
   export interface Previously {
@@ -134,16 +134,6 @@ declare namespace __GSICSGO {
 
   export interface Grenades {
     [key: string]: Grenade
-  }
-
-  export interface Grenade {
-    owner: number
-    position?: string
-    velocity?: string
-    flames?: Object
-    lifetime: string
-    type: string
-    effecttime?: string
   }
 
   export interface AllPlayers {
@@ -284,6 +274,36 @@ declare namespace __GSICSGO {
       paintkit: string
       ammo_reserve: number
       state: WeaponState
+    }
+  }
+
+  export type Grenade = grenadeTypes.DecoySmokeGrenade |
+    grenadeTypes.DefaultGrenade |
+    grenadeTypes.FireBombGrenade
+
+  namespace grenadeTypes {
+    interface DecoySmokeGrenade {
+      owner: number
+      type: 'decoy' | 'smoke'
+      position: string
+      velocity: string,
+      lifetime: string,
+      effecttime: string
+    }
+
+    interface DefaultGrenade {
+      owner: number
+      type: 'frag' | 'firebomb' | 'flashbang'
+      position: string
+      velocity: string,
+      lifetime: string
+    }
+
+    interface FireBombGrenade {
+      owner: number
+      type: 'inferno'
+      lifetime: string
+      flames: { [key: string]: string }
     }
   }
 

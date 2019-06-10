@@ -1,5 +1,8 @@
 ## Types for CS:GO Game State Integration
 
+Install by:
+`npm install csgo-gsi-types --save-dev`
+
 ### Example:
 ```ts
 // Type to use when user is spectating 
@@ -9,9 +12,10 @@ interface GameStateSpectating {
   player: Player
   allplayers: AllPlayers
   phase_countdowns: Phase
-  grenades?: Grenades
   previously: Previously
   bomb: Bomb
+  grenades?: Grenades
+  round?: Round
   auth: Auth
 }
 
@@ -35,9 +39,6 @@ export interface GameStateMenu {
 ```
 
 ### How to use:
-
-Install by:
-`npm install csgo-gsi-types --save-dev`
 
 ```ts
 import { GameStateSpectating } from 'csgo-gsi-types'
