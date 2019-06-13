@@ -5,8 +5,8 @@ Install by:
 
 ### Example:
 ```ts
-// Type for unknown state
-export interface GameState {
+// Type for unknown/general state
+interface GameState {
   provider: Provider
   auth: Auth
   player?: Player
@@ -46,7 +46,7 @@ interface GameStatePlaying {
 }
 
 // Type in menus
-export interface GameStateMenu {
+interface GameStateMenu {
   provider: Provider
   player: PlayerMenu
   auth: Auth
