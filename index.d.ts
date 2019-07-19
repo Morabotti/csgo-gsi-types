@@ -17,6 +17,7 @@ declare module 'csgo-gsi-types' {
 
   export import weaponTypes = __GSICSGO.weaponTypes
   export import grenadeTypes = __GSICSGO.grenadeTypes
+  export import WeaponSlotType = __GSICSGO.WeaponSlotType
 
   export import TeamType = __GSICSGO.TeamType
   export import RoundWinningType = __GSICSGO.RoundWinningType
@@ -354,7 +355,8 @@ declare namespace __GSICSGO {
 
   export interface Phase {
     phase: PhaseExt
-    phase_ends_in: string
+    // ! Beaware that 'phase_ends_in' actually returns float in string format.
+    phase_ends_in: number
   }
 
   export interface Bomb {
