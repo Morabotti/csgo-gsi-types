@@ -1,6 +1,6 @@
 {
   "name": "csgo-gsi-types",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Package for Counter-Strike: Global Offensive Game State Integration types",
   "main": "index.d.ts",
   "types": "index.d.ts",

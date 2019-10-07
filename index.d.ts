@@ -414,5 +414,5 @@ declare namespace __GSICSGO {
 
   export type PhaseMap = 'live' | 'intermission' | 'gameover' | 'warmup'
 
-  export type PhaseExt = 'freezetime' | 'bomb' | 'warmup' | 'live' | 'over' | 'defuse' | 'paused'
+  export type PhaseExt = 'freezetime' | 'bomb' | 'warmup' | 'live' | 'over' | 'defuse' | 'paused' | 'timeout_ct' | 'timeout_t'
 }
